@@ -17,7 +17,7 @@ public class MorseCodeTranslator {
             "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.",
             "-----", "--..--", ".-.-.-", "..--.." };
 
-    public static String translate(String text){
+    public static String translateFromText(String text){
         StringBuilder sb = new StringBuilder();
         Map<String, String> charMap = mapMorseCodes();
         String[] words = text.trim().toLowerCase(Locale.ROOT).split(" ");

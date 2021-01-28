@@ -23,10 +23,20 @@ class MorseCodeApplicationTests {
 	@Test
 	void shoulReturnMorse() throws Exception
 	{
-		String text = "abcdefghijklmnopqrstuvwxyz0123456789";
+		String text = "abcdefghijklmnopqrstuvwxyz0123456789 12345";
+		this.mockmvc.perform(get("/textToMorse/" + text))
+				.andDo(print())
+				.andExpect(status().is(200))
+				.andExpect(content().string(containsString(".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.. ----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.\n.---- ..--- ...-- ....- .....")));
+	}
+
+	@Test
+	void shoulReturnText() throws Exception
+	{
+		String text = ".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.. ----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.   .---- ..--- ...-- ....- .....";
 		this.mockmvc.perform(get("/morseToText/" + text))
 				.andDo(print())
 				.andExpect(status().is(200))
-				.andExpect(content().string(containsString(".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.. ----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.")));
+				.andExpect(content().string(containsString("abcdefghijklmnopqrstuvwxyz0123456789 12345")));
 	}
 }
