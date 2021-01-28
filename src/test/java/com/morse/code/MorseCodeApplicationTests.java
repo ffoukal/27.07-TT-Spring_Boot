@@ -24,7 +24,7 @@ class MorseCodeApplicationTests {
 	void shoulReturnMorse() throws Exception
 	{
 		String text = "abcdefghijklmnopqrstuvwxyz0123456789";
-		this.mockmvc.perform(get("/morse/" + text))
+		this.mockmvc.perform(get("/morseToText/" + text))
 				.andDo(print())
 				.andExpect(status().is(200))
 				.andExpect(content().string(containsString(".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.. ----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.")));

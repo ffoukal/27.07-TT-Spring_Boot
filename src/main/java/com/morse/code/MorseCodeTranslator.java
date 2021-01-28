@@ -28,7 +28,23 @@ public class MorseCodeTranslator {
                 sb.append(charMap.get(c.toString()));
                 sb.append(" ");
             }
-            sb.append(" | ");
+            sb.append("  ");
+        }
+        return sb.toString();
+    }
+
+    public static String translateFromMorseCode(String text){
+        StringBuilder sb = new StringBuilder();
+        Map<String, String> charMap = mapMorseCodes2();
+        String[] words = text.trim().toLowerCase(Locale.ROOT).split("   ");
+
+        for(String word : words){
+            String[] symbols = word.split(" ");
+            for (int i = 0; i < symbols.length; i++){
+                String c  = symbols[i];
+                sb.append(charMap.get(c));
+            }
+            sb.append(" ");
         }
         return sb.toString();
     }
@@ -41,8 +57,16 @@ public class MorseCodeTranslator {
         return charMap;
     }
 
-//    public static void main(String[] args) {
-//        System.out.println(translate("abcdefghijklmnopqrstuvwxyz0123456789"));
-//    }
+    private static Map<String, String> mapMorseCodes2(){
+        Map<String, String> charMap = new HashMap<>();
+        for (int i = 0; i < letters.length; i++){
+            charMap.put(morse[i], letters[i]);
+        }
+        return charMap;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(translateFromMorseCode("--.- ..- .   --- -. -.. .-   .-- .- -.-. .... ---"));
+    }
 
 }
