@@ -22,7 +22,7 @@ public class MorseCodeController {
         //Se usa como separador de palabras el pipe ("|") porque cuando se renderiza en html, los multiples espacios son ignorados y quedan todas las palabras juntas
         String decoded = URLDecoder.decode(text, Charset.forName("UTF-8"));
         String response = MorseCodeTranslator.translateFromText(decoded);
-        return response.replace("   ", "\n");
+        return response.trim().replace("   ", "<br>");
     }
 
 }

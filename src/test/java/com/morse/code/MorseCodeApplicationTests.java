@@ -27,7 +27,7 @@ class MorseCodeApplicationTests {
 		this.mockmvc.perform(get("/textToMorse/" + text))
 				.andDo(print())
 				.andExpect(status().is(200))
-				.andExpect(content().string(containsString(".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.. ----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.\n.---- ..--- ...-- ....- .....")));
+				.andExpect(content().string(containsString(".- -... -.-. -.. . ..-. --. .... .. .--- -.- .-.. -- -. --- .--. --.- .-. ... - ..- ...- .-- -..- -.-- --.. ----- .---- ..--- ...-- ....- ..... -.... --... ---.. ----.<br>.---- ..--- ...-- ....- .....")));
 	}
 
 	@Test
